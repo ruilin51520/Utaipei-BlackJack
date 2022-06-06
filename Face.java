@@ -1,7 +1,7 @@
 public enum Face {
-    ACE("A", null),
+    ACE("A", 1),
     DEUCE("2", 2),
-    THREE("3", 3),
+    /*THREE("3", 3),
     FOUR("4",4),
     FIVE("5",5),
     SIX("6",6),
@@ -11,14 +11,16 @@ public enum Face {
     TEN("10",10),
     JACK("J",10),
     QUEEN("Q",10),
-    KING("K",10);
+    KING("K",10)*/;
 
-    private final String faceName;
-    private final Integer faceValue;
+    private String faceName;
+    private int faceValue;
 
-    Face(String faceName, Integer faveValue) {
+    Face() {}
+
+    Face(String faceName, int faceValue) {
         this.faceName = faceName;
-        this.faceValue = faveValue;
+        this.faceValue = faceValue;
     }
 
     public String getName() {

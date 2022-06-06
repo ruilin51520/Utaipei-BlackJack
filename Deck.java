@@ -1,14 +1,11 @@
-import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Deck {
-    private final List<Card> decks = new ArrayList<>();
+    private final LinkedList<Card> decks = new LinkedList<>();
 
-    public Deck() {
-        for (int i = 0; i < 4; i++)
-            newDeck();
-    }
+    public Deck() {}
 
     public Deck(int numberOfDecks) {
         for (int i = 0; i < numberOfDecks; i++)
@@ -25,9 +22,15 @@ public class Deck {
         Collections.shuffle(decks);
     }
 
+    public void gotACard(Card card) {
+        decks.add(card);
+    }
+
     public Card dealACard() {
-        Card temp = decks.get(0);
-        decks.remove(0);
-        return temp;
+        return decks.poll();
+    }
+
+    public List<Card> getCardsInDeck() {
+        return decks;
     }
 }

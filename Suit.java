@@ -4,7 +4,9 @@ public enum Suit {
     DIAMONDS("Diamonds"),
     CLUBS("Clubs");
 
-    private final String suitName;
+    private String suitName;
+
+    Suit() {}
 
     Suit(String suitName) {
         this.suitName = suitName;

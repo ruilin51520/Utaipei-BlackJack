@@ -4,6 +4,6 @@ public class PlayGame {
         BlackJack game = new BlackJack();
         do {
             game.start();
-        } while (Utilities.askYesOrNo("Whether to continue the game? (Y/N)"));
+        } while (Utilities.askYesOrNo("Whether to continue the game? (Y/N)", true));
     }
 }

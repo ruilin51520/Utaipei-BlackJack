@@ -1,13 +1,16 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedList;
 
 public class Hand {
-    private final List<Card> cards = new ArrayList<>();
+    public enum Status {WON, PUSHED, LOST, PLAYING, BANKRUPT}
+
+    private Status status = Status.PLAYING;
+    private final LinkedList<Card> cards = new LinkedList<>();
+    private boolean doesBlackjack = false;
 
     public Hand() {}
 
-    public void gotACard(Card aCard) {
-        cards.add(aCard);
+    public void gotACard(Card card) {
+        cards.add(card);
     }
 
     public int calculateValue() {
@@ -17,9 +20,9 @@ public class Hand {
         for (Card card : cards) {
             if (card.getFace().equals(Face.ACE)) {
                 numberOfAce++;
-                continue;
+            } else {
+                sum += card.getFaceAsValue();
             }
-            sum += card.getFaceAsValue();
         }
 
         if (numberOfAce > 0) {
@@ -41,7 +44,27 @@ public class Hand {
             return "n + " + (calculateValue() - 11);
     }
 
-    public List<Card> getCardsInHand() {
+    public void startNewGame() {
+        getCardsInHand().clear();
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public LinkedList<Card> getCardsInHand() {
         return cards;
+    }
+
+    public void setDoesBlackjack(boolean doesBlackjack) {
+        this.doesBlackjack = doesBlackjack;
+    }
+
+    public boolean getDoesBlackjack() {
+        return doesBlackjack;
     }
 }
